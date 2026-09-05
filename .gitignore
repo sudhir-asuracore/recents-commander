@@ -1,0 +1,14 @@
+# Logs and temporary files
+*.log
+*.tmp
+*~
+.DS_Store
+
+# Antigravity workspace profile
+.agyprofile
+
+# Test artifacts
+node_modules/
+
+# Local design documents and specifications
+docs/

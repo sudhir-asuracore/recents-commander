@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# omarchy:summary=Control Recents Commander (toggle / summon / close / clear)
+# omarchy:args=[toggle|summon|close|clear]
+# omarchy:examples=omarchy-recents | omarchy-recents toggle | omarchy-recents summon | omarchy-recents clear
+
+set -euo pipefail
+
+PLUGIN_ID="io.github.omarchy.recents-commander"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/recents-commander"
+STATE_FILE="$STATE_DIR/recents.json"
+
+verb="${1:-toggle}"
+
+case "$verb" in
+  toggle)
+    exec omarchy-shell shell toggle "$PLUGIN_ID" '{}'
+    ;;
+  summon)
+    exec omarchy-shell shell summon "$PLUGIN_ID" '{}'
+    ;;
+  close|hide)
+    exec omarchy-shell shell hide "$PLUGIN_ID"
+    ;;
+  clear)
+    mkdir -p "$STATE_DIR"
+    printf '{\n  "version": 1,\n  "apps": [],\n  "directories": []\n}\n' > "$STATE_FILE"
+    echo "Recents Commander history cleared."
+    ;;
+  purge)
+    if [[ -d "$STATE_DIR" ]]; then
+      rm -rf "$STATE_DIR"
+      echo "Removed state directory: $STATE_DIR"
+    fi
+    local_bin="$HOME/.local/bin/omarchy-recents"
+    if [[ -L "$local_bin" ]]; then
+      rm -f "$local_bin"
+      echo "Removed binary symlink: $local_bin"
+    fi
+    echo "Recents Commander state and binaries purged successfully."
+    ;;
+  -h|--help|help)
+    cat <<USAGE
+Usage: omarchy-recents [command]
+
+Commands:
+  toggle     Open Recents Commander, or close it if visible (Default).
+  summon     Always open the Recents Commander window.
+  close      Close the Recents Commander window if open.
+  clear      Reset recents history file to empty.
+  purge      Completely delete recents state directory and binary symlink.
+  help       Show this help message.
+
+Keybindings (Hyprland):
+  o.bind("SUPER + SHIFT + SPACE", "Recents Commander", "omarchy-recents toggle")
+USAGE
+    exit 0
+    ;;
+  *)
+    echo "omarchy-recents: unknown command '$verb'. Try 'omarchy-recents --help'." >&2
+    exit 2
+    ;;
+esac

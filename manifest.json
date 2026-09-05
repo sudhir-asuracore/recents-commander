@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.omarchy.recents-commander",
+  "name": "Recents Commander",
+  "version": "0.1.1",
+  "author": "Omarchy Community",
+  "license": "MIT",
+  "description": "Unified recent apps and directories commander with quick launcher and bar glyph.",
+  "kinds": [
+    "bar-widget",
+    "overlay",
+    "service"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "barWidget": "BarWidget.qml",
+    "overlay": "RecentsCommander.qml",
+    "service": "Service.qml"
+  },
+  "barWidget": {
+    "displayName": "Recents Commander",
+    "description": "Quick access to recently opened applications and directories",
+    "category": "Launcher",
+    "allowMultiple": false,
+    "defaultSection": "left"
+  }
+}
