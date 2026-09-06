@@ -65,8 +65,12 @@ omarchy bar move io.github.omarchy.recents-commander --section left
 In your Hyprland configuration (e.g. `~/.config/hypr/bindings.lua` or `bindings/utilities.lua`), add:
 
 ```lua
+-- Optional: If the shortcut is already in use, unbind it first:
+-- hl.unbind("SUPER + SHIFT + SPACE")
 o.bind("SUPER + SHIFT + SPACE", "Recents Commander", "omarchy-recents toggle")
 ```
+
+> **Tip:** You can check your existing shortcuts at any time with `omarchy menu keybindings --print`.
 
 Ensure `bin/omarchy-recents` is accessible in your `$PATH` (e.g. symlinked to `~/.local/bin/omarchy-recents`):
 
