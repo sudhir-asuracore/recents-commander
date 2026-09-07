@@ -1,3 +1,5 @@
+[![CI](https://github.com/sudhir-asuracore/recents-commander/actions/workflows/ci.yml/badge.svg)](https://github.com/sudhir-asuracore/recents-commander/actions/workflows/ci.yml)
+
 # Recents Commander
 
 A lightweight, keyboard-first desktop extension and workflow accelerator for **Omarchy OS** (Quattro). 
