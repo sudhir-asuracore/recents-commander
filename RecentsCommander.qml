@@ -545,6 +545,7 @@ Item {
                       }
 
                       Text {
+                        textFormat: Text.PlainText
                         visible: model.itemType === "directory"
                         anchors.centerIn: parent
                         text: model.icon === "folder-git" ? "" : ""
