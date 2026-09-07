@@ -127,6 +127,21 @@ omarchy-restart-shell
 
 ---
 
+## Development & Testing
+
+Recents Commander includes a zero-dependency automated test suite using the native Node.js test runner (`node:test`) covering:
+- **Security & Rich-Text Injection:** Enforces `textFormat: Text.PlainText` across all dynamic QML `Text` sinks and validates client metadata control-character sanitization in [`Service.qml`](Service.qml).
+- **Model Logic:** Validates MRU sorting, state serialization/deserialization resilience against malformed data, and XSS/HTML payload handling in search filtering.
+- **Manifest Integrity:** Verifies `manifest.json` schema rules and entry-point presence.
+
+To run the tests:
+```bash
+node --test tests/*.test.js
+```
+
+---
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE). Copyright (c) 2026 Omarchy Community Contributors.
+
