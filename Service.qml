@@ -137,8 +137,8 @@ Item {
   }
 
   function resolveApp(appId, title) {
-    var cleanAppId = String(appId || "").trim()
-    var cleanTitle = String(title || "").trim()
+    var cleanAppId = String(appId || "").replace(/[\r\n\t]/g, " ").trim()
+    var cleanTitle = String(title || "").replace(/[\r\n\t]/g, " ").trim()
     if (!cleanAppId && !cleanTitle) return null
 
     var appLib = root.shell ? root.shell.appLibrary : null
@@ -279,14 +279,14 @@ Item {
 
   function onNewWindowOpened(tl) {
     if (!tl) return
-    var appId = String(tl.appId || "").trim()
-    var title = String(tl.title || "").trim()
+    var appId = String(tl.appId || "").replace(/[\r\n\t]/g, " ").trim()
+    var title = String(tl.title || "").replace(/[\r\n\t]/g, " ").trim()
 
     if (!appId || appId === "null" || appId === "undefined") {
       Qt.callLater(function() {
         if (!tl) return
-        var deferredAppId = String(tl.appId || "").trim()
-        var deferredTitle = String(tl.title || "").trim()
+        var deferredAppId = String(tl.appId || "").replace(/[\r\n\t]/g, " ").trim()
+        var deferredTitle = String(tl.title || "").replace(/[\r\n\t]/g, " ").trim()
         root.processOpenedApp(deferredAppId, deferredTitle)
       })
       return

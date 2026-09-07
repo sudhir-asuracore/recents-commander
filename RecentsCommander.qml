@@ -487,6 +487,7 @@ Item {
                     spacing: Style.space(8)
 
                     Text {
+                      textFormat: Text.PlainText
                       text: (model.sectionTitle || "").toUpperCase()
                       color: root.foreground
                       opacity: 0.65
@@ -496,6 +497,7 @@ Item {
                     }
 
                     Text {
+                      textFormat: Text.PlainText
                       text: "(" + model.sectionCount + ")"
                       color: root.foreground
                       opacity: 0.4
@@ -559,6 +561,7 @@ Item {
                       spacing: Style.space(2)
 
                       Text {
+                        textFormat: Text.PlainText
                         width: parent.width
                         text: model.title || ""
                         color: index === root.selectedIndex ? root.selectedText : root.foreground
@@ -569,6 +572,7 @@ Item {
                       }
 
                       Text {
+                        textFormat: Text.PlainText
                         width: parent.width
                         text: model.subtitle || ""
                         color: index === root.selectedIndex ? root.selectedText : root.foreground
@@ -581,6 +585,7 @@ Item {
 
                     // Relative Time
                     Text {
+                      textFormat: Text.PlainText
                       anchors.verticalCenter: parent.verticalCenter
                       text: model.relativeTime || ""
                       color: index === root.selectedIndex ? root.selectedText : root.foreground
@@ -595,6 +600,7 @@ Item {
 
             // Empty state message
             Text {
+              textFormat: Text.PlainText
               anchors.centerIn: parent
               visible: displayModel.count === 0
               text: root.filterText ? "No recents matching \"" + root.filterText + "\"" : "No recent applications or directories found."
@@ -635,6 +641,7 @@ Item {
 
               Text {
                 id: toastText
+                textFormat: Text.PlainText
                 anchors.centerIn: parent
                 text: root.toastMessage
                 color: root.selectedText
